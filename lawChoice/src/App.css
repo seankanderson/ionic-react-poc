@@ -1,0 +1,12 @@
+.logoImg {
+    height: 100px;
+    align-content: center;
+}
+
+.toolbarStyle {
+    --padding-top: 10px;
+}
+
+.detailImage {
+    height: 400px;
+}
