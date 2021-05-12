@@ -20,6 +20,7 @@ import {
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import '../App.css';
+import axios from 'axios';
 
 
 const Contact: React.FC = () => {
@@ -29,7 +30,20 @@ const Contact: React.FC = () => {
   const [messageAlert, showMessageAlert] = useState<boolean>(false);
   let history = useHistory();
 
-  const sendMEssage = () => {
+  const sendMEssage = async () => {
+    
+    const response =
+      await axios.get("https://api.airtable.com/v0/appVTaxjt11yHcFQ6/Contacts",
+        { 
+          headers: 
+          {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer keyWWfiKThGQO3YsM '
+          }
+        }
+      )
+    console.log(response.data)
+    
     if (!name || !email || !message) {
       showMessageAlert(true);
     } else {
@@ -37,6 +51,7 @@ const Contact: React.FC = () => {
       history.push("/home");
     }
   };
+
 
   return (
     <IonPage>
